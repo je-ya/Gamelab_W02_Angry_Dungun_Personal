@@ -4,14 +4,14 @@ using UnityEngine;
 public class Aazz0200_Act : MonoBehaviour
 {
     [Header("Weapon Prefabs")]
-    public GameObject defaultBulletPref;
+    public GameObject defaultBulletPref; // 기본 총알 
     public GameObject iceRelicBulletPref; // 얼음 유물 프리팹을 가지고 있을때 적용될 총알
     public GameObject wormRelicShieldObj; // 벌레 유물 프리팹을 가지고 있을 때 생성할 방패. Prefab이 아니라 하위 오브젝트의 enable 조절.
     public GameObject lightRelicRayPref; // 빛 유물 프리팹을 가지고 있을 때 생성할 특수 공격.
 
-    public float col_str;
-    public float col_max;
-    float col_ing;
+    public float col_str; // 안쓰더라 
+    public float col_max; // 연사속도
+    float col_ing; // 연사 속도 시간?
 
     [Header("Relic Prefabs")]
     public Relic _iceRelic; // 얼음 유물 프리팹 
@@ -19,7 +19,7 @@ public class Aazz0200_Act : MonoBehaviour
     public Relic _lightRelic; // 빛 유물 프리팹
 
     [Header("WormShield References")]
-    public float wormShieldCoolDown = 5f;
+    public float wormShieldCoolDown = 5f;// 총알 막으면 5초뒤에 다시 나오는거 
     [SerializeField] private float elapsedWormShieldTime = 0;
     [SerializeField] private bool isWormShieldEnabled = false;
 
@@ -29,7 +29,7 @@ public class Aazz0200_Act : MonoBehaviour
     [SerializeField] private bool rayReady = false;
     
 
-    float _nomarlCol = 0.1f;
+    float _nomarlCol = 0.1f; // 아이템 먹었을때 다시 돌아올 연사 속도 
 
     public float Col_Max
     {
@@ -41,9 +41,6 @@ public class Aazz0200_Act : MonoBehaviour
             // 코루틴 사용해서 몇초뒤에 다시 돌아 오면 될듯?
             StartCoroutine(CoolDownShootSpeed());
         }
-
-
-
     }
 
 

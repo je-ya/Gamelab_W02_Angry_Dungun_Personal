@@ -41,12 +41,15 @@ public class YR_SpawnManager : MonoBehaviour
     private Transform playerTransform;
 
 
+    private void Awake()
+    {
+        Worm_Forward wormForward = spawnData.enemyType.GetComponentInChildren<Worm_Forward>();
+        wormForward.currentState = spawnData.state;
+    }
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
-        Worm_Forward wormForward = spawnData.enemyType.GetComponentInChildren<Worm_Forward>();
-        wormForward.currentState = spawnData.state;
         SpawnAllEnemies();
         Invoke("BossSpawn", bossSpawnDelay);
 

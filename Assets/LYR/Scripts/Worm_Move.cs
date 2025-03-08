@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ public class Worm_Move : MonoBehaviour
 
     private void Start()
     {
-        CreateFollowers();
+        StartCoroutine(CreateFollowers());
         spwanPoint = transform.parent.position;
 
         float radiusDistence = (radius / 2 + transform.parent.localScale.x);
@@ -70,27 +71,31 @@ public class Worm_Move : MonoBehaviour
         UpdateFollowers();
     }
 
-    void CreateFollowers()
+    IEnumerator CreateFollowers()
     {
         Transform previousTarget = transform; // 첫 번째 타겟은 원을 그리는 오브젝트
+        float interval = 0.1f;
 
         for (int i = 0; i < numFollowers; i++)
         {
             // 따라가는 오브젝트 생성
             GameObject follower = Instantiate(followerPrefab, transform.position, Quaternion.identity);
+
+            follower.transform.parent = transform;
             Worm_circle followerScript = follower.GetComponent<Worm_circle>();
 
             // Follower 스크립트 설정
-            followerScript.target = previousTarget;
+            followerScript.target = transform;
 
             SetOrderInLayer(follower, 9);
 
 
             // 리스트에 추가
-            followers.Add(follower);
+            //followers.Add(follower);
 
             // 다음 오브젝트의 타겟을 현재 오브젝트로 설정
-            previousTarget = follower.transform;
+            //previousTarget = follower.transform;
+            yield return new WaitForSeconds(interval);
         }
     }
 
