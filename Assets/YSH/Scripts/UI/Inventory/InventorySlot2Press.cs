@@ -25,7 +25,7 @@ public class InventorySlot2Press : MonoBehaviour
     private void Update()
     {
         _itemID = _itemSlotItemID.ItemID;
-        Debug.Log(_itemID);
+        //Debug.Log(_itemID);
 
         if (Input.GetButtonDown("ItemUse2"))
         {

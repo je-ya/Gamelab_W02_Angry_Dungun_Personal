@@ -6,10 +6,15 @@ public class BossMove : MonoBehaviour
     public float speed = 5f; // 이동 속도
     private Vector3 targetPosition; // 목적지 위치
     private bool isMoving = false; // 이동 중인지 여부
-    private bool isWaiting = false; // 대기 중인지 여부'
+    private bool isWaiting = false; // 대기 중인지 여부
+
+
     CheckCenterOfMap centerOb;
     Vector3 centerPosion;
+
+    [SerializeField]
     float radius = 33;
+
     float xMin;
     float xMax;
     float yMin;
