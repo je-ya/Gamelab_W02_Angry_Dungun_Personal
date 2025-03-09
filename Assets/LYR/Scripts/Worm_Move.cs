@@ -85,16 +85,16 @@ public class Worm_Move : MonoBehaviour
             Worm_circle followerScript = follower.GetComponent<Worm_circle>();
 
             // Follower 스크립트 설정
-            followerScript.target = transform;
+            followerScript.target = previousTarget;
 
             SetOrderInLayer(follower, 9);
 
 
             // 리스트에 추가
-            //followers.Add(follower);
+            followers.Add(follower);
 
             // 다음 오브젝트의 타겟을 현재 오브젝트로 설정
-            //previousTarget = follower.transform;
+            previousTarget = follower.transform;
             yield return new WaitForSeconds(interval);
         }
     }

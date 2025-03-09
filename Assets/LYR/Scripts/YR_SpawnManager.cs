@@ -73,7 +73,7 @@ public class YR_SpawnManager : MonoBehaviour
 
                 v.transform.position = new Vector3(v.transform.position.x, v.transform.position.y, 0);
 
-
+                 
                 // 다음 스폰까지 대기
                 yield return new WaitForSeconds(spawnInterval);
             }

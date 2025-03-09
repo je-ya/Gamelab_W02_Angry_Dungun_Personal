@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 15810252}
   - component: {fileID: 15810254}
   - component: {fileID: 15810253}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Square (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2470,11 +2470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2479913837341526163, guid: 6564463aae6f5c64cabfd37c8fddb267, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -56.9
       objectReference: {fileID: 0}
     - target: {fileID: 2479913837341526163, guid: 6564463aae6f5c64cabfd37c8fddb267, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.9
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2479913837341526163, guid: 6564463aae6f5c64cabfd37c8fddb267, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2582,11 +2582,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210521092766586568, guid: 6564463aae6f5c64cabfd37c8fddb267, type: 3}
       propertyPath: max
-      value: 100000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9210521092766586568, guid: 6564463aae6f5c64cabfd37c8fddb267, type: 3}
       propertyPath: now
-      value: 100000
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210521092766586568, guid: 6564463aae6f5c64cabfd37c8fddb267, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9210521092766586568, guid: 6564463aae6f5c64cabfd37c8fddb267, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
@@ -4440,7 +4444,7 @@ GameObject:
   - component: {fileID: 860816561}
   - component: {fileID: 860816563}
   - component: {fileID: 860816562}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Square (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5853,7 +5857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1150966399}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: "\uB9F5"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10475,7 +10479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1830884225}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: "\uC785\uAD6C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
