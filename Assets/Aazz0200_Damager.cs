@@ -9,6 +9,7 @@ public class Aazz0200_Damager : MonoBehaviour
 
 
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(2);
@@ -41,7 +42,8 @@ public class Aazz0200_Damager : MonoBehaviour
     }
 
 
-    public void Dest() { Destroy(gameObject); }
+    public void Dest() {   
+        Destroy(gameObject); }
 
 }
 

@@ -51,7 +51,7 @@ public class YR_SpawnManager : MonoBehaviour
         init();
 
         SpawnListEnemies();
-        Invoke("BossSpawn", bossSpawnDelay);
+        //Invoke("BossSpawn", bossSpawnDelay);
         StartCoroutine(SpawnnomalWorm());
     }
 

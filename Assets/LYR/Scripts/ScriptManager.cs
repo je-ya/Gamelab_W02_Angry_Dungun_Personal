@@ -29,7 +29,9 @@ public enum ActionType
     SetDashable,
     NextRTrigger,
     TextAutoSkipAT,
-    Clickenough
+    Clickenough,
+    EnemyObON,
+    UseItem1
 }
 
 public class ScriptManager : MonoBehaviour
@@ -58,6 +60,8 @@ public class ScriptManager : MonoBehaviour
     float holdTime = 1.0f;
     Coroutine clickCoroutine;
 
+    Transform parentObject;
+
     void Start()
     {
         Init();
@@ -78,6 +82,8 @@ public class ScriptManager : MonoBehaviour
         dashScript = playerObject.GetComponent<PlayerDash>();
 
         string objectName = gameObject.name;
+
+        parentObject = transform.parent;
 
         trigger = GetComponent<Trigger>();
 
@@ -122,75 +128,87 @@ public class ScriptManager : MonoBehaviour
 
         switch (currentElement.actionToNext)
         {
-            case ActionType.MouseClick:
+            case ActionType.MouseClick: //마우스 클릭 시 다음 스크립트 출력
                 if (Input.GetMouseButtonDown(0))
                 {
                     ShowNextText();
                 }
                 break;
-            case ActionType.SpaceBar:
+            case ActionType.SpaceBar: //스페이스바 입력 시 다음 스크립트 출력
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     ShowNextText();
                 }
                 break;
-            case ActionType.SetMoveable:
+            case ActionType.SetMoveable: //마우스 클릭 시 캐릭터 움직임&다음 스크립트 출력
                 if(Input.GetMouseButtonDown(0))
                 {
                     playerScript.CanMove = true;
                     ShowNextText();
                 }
                 break;
-            case ActionType.SetShootable:
-                if(Input.GetMouseButtonDown(0))
+            case ActionType.SetShootable: //마우스 클릭 시 발사 가능&다음 스크립트 출력
+                if (Input.GetMouseButtonDown(0))
                 {
                     playerScript.CanShoot = true;
                     ShowNextText();
                 }    
                 break;
-            case ActionType.EnterToTrigger:
+            case ActionType.EnterToTrigger:  //트리거에 닿으면 다음 스크립트 출력
                 if (isEnterTriggered)
                 {
                     ShowNextText();
                     isEnterTriggered = false; // 이벤트 처리 후 플래그 초기화
                 }
                 break;
-            case ActionType.SetDashable:
-                if(Input.GetMouseButtonDown(0))
+            case ActionType.SetDashable:  //마우스 클릭 시 대쉬 가능&다음 스크립트 출력
+                if (Input.GetMouseButtonDown(0))
                 {
                     dashScript.enabled = true;
                     ShowNextText();
                 }
                 break;
-            case ActionType.TextAutoSkip:
+            case ActionType.TextAutoSkip:  //타이핑이 끝나고 0.5초 뒤에 다음 스크립트 출력
                 if (typingDone == true)
                 {
-                    Invoke("ShowNextText", 0.5f);
-
+                    Invoke("ShowNextText", 1f);
                 }
                 break;
-            case ActionType.TextAutoSkipAT:
+            case ActionType.TextAutoSkipAT:  //타이핑이 끝나고 0.5초 뒤에 다음 스크립트 출력&오브젝트의 트리거 실행
                 if (typingDone == true)
                 {
                     Invoke("ShowNextText", 0.5f);
                     trigger.ActivateTrigger();
                 }
                 break;
-            case ActionType.KillEnemy:
+            case ActionType.KillEnemy:  //맵의 Enemy의 자식 오브젝트가 없으면 다음 스크립트 출력
                 if(enemyExist ==false) ShowNextText();
                 break;
-            case ActionType.NextRTrigger:
+            case ActionType.NextRTrigger:  //마우스 클릭 시 다음 스크립트 출력 & 오브젝트의 트리거 실행
                 if (Input.GetMouseButtonDown(0))
                 {
                     trigger.ActivateTrigger();
                     ShowNextText();
                 }
                 break;
-            case ActionType.Clickenough:
+            case ActionType.Clickenough:  //마우스 클릭이 일정 시간 지속되면 다음 스크립트 출력
                 if(enoughTime == true)
                 {
                     ShowNextText();
                 }    
+                break;
+            case ActionType.EnemyObON:
+                if (Input.GetMouseButtonDown(0)) 
+                {
+                    EnemyOn();
+                    ShowNextText();
+                }
+                break;
+            case ActionType.UseItem1:
+                if(Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    ShowNextText();
+                }
                 break;
             default:
                 break;
@@ -246,7 +264,6 @@ public class ScriptManager : MonoBehaviour
 
     void CheckEnemy()
     {
-        Transform parentObject = transform.parent;
 
         if (parentObject != null)
         {
@@ -264,6 +281,16 @@ public class ScriptManager : MonoBehaviour
             }
         }
     }
+
+
+    void EnemyOn()
+    {
+        if (parentObject != null)
+        {
+            Transform enemyObject = parentObject.Find("Enemy");
+            enemyObject.gameObject.SetActive(true);
+        }    
+    }    
 
     void NoEnemy()
     {

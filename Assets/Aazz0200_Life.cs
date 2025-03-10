@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Aazz0200_Life : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class Aazz0200_Life : MonoBehaviour
     public UnityEngine.Events.UnityEvent OnHit;
 
     public Transform _relicTrans;
+
+    public SpriteRenderer spriteRenderer;
+    float blinkInterval = 0.1f; // 깜빡이는 간격 (초 단위)
+    float blinkDuration = 0.5f;
+
     private void Start()
     {
         ui = GetComponentInChildren<TextMesh>();
@@ -49,6 +55,7 @@ public class Aazz0200_Life : MonoBehaviour
         if (team == Team.Plyaer)
         {
             _playerHp.value = now / max;
+            StartCoroutine(Blink());
         }
 
         if (now <= 0)
@@ -108,5 +115,31 @@ public class Aazz0200_Life : MonoBehaviour
     {
         ItemGetEventManager.Instance.GetItem(_itemID);
         Destroy(gameObject);
+    }
+
+    private IEnumerator Blink()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < blinkDuration)
+        {
+            // 스프라이트 렌더러를 끔
+            spriteRenderer.enabled = false;
+
+            // 지정된 간격만큼 대기
+            yield return new WaitForSeconds(blinkInterval);
+
+            // 스프라이트 렌더러를 켬
+            spriteRenderer.enabled = true;
+
+            // 다시 지정된 간격만큼 대기
+            yield return new WaitForSeconds(blinkInterval);
+
+            // 경과 시간 업데이트
+            elapsedTime += blinkInterval * 2;
+        }
+
+        // 블링크 효과가 끝난 후 스프라이트 렌더러를 켜진 상태로 유지
+        spriteRenderer.enabled = true;
     }
 }
