@@ -9,6 +9,12 @@ public class Trigger : MonoBehaviour
     //public UnityEngine.Events.UnityEvent OnEixt;
     // public LayerMask CheckLayer;
 
+
+    public void ActivateTrigger()
+    {
+        OnEnter.Invoke();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Aazz0200_Player>() != null)

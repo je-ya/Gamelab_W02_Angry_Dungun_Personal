@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/YSH/Scene/MainScene.unity
-    guid: 58c1aae90e3b42045b6afde758a3a0d7
+    path: Assets/Main2.unity
+    guid: f157b1c169e7a9149915a740c819f460
+  - enabled: 1
+    path: Assets/Tutorial.unity
+    guid: 577278d86339d324d9cfbc7efb2dbfce
   - enabled: 1
     path: Assets/InGame.unity
     guid: cd35923ed08dcbe44ac77147426dcbab

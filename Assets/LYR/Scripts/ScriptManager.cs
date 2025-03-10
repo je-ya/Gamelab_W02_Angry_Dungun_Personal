@@ -21,9 +21,12 @@ public enum ActionType
 {
     SpaceBar,       // 아무 행동 없음
     MouseClick,  // 마우스 클릭
-    ClickToSetMoveable,
-    ClickToSetShootable,
-    EnterToTrigger
+    SetMoveable,
+    SetShootable,
+    EnterToTrigger,
+    TextAutoSkip,
+    KillEnemy,
+    SetDashable
 }
 
 public class ScriptManager : MonoBehaviour
@@ -39,7 +42,14 @@ public class ScriptManager : MonoBehaviour
     private const float typingSpeed = 0.05f; // 고정된 타이핑 속도
     private Vector3 defaultPosition;       // 오브젝트의 기본 위치
 
+
+    bool isEnterTriggered;
+    [SerializeField]
+    bool enemyExist;
+    Trigger trigger;
+
     private Aazz0200_Player playerScript;
+    private PlayerDash dashScript;
 
 
     void Start()
@@ -50,6 +60,7 @@ public class ScriptManager : MonoBehaviour
     void Update()
     {
         ApplyTrigger();
+        CheckEnemy();
     }
 
     //초기화
@@ -57,6 +68,13 @@ public class ScriptManager : MonoBehaviour
     {
         GameObject playerObject = GameObject.FindWithTag("Player");
         playerScript = playerObject.GetComponent<Aazz0200_Player>();
+        dashScript = playerObject.GetComponent<PlayerDash>();
+        trigger = GetComponent<Trigger>();
+        enemyExist = true;
+        if (trigger == null)
+        {
+            Debug.LogError("Trigger 스크립트를 찾을 수 없습니다.");
+        }
 
         //TextMeshProUGUI 가져오기
         if (textMeshPro == null)
@@ -96,23 +114,44 @@ public class ScriptManager : MonoBehaviour
                     ShowNextText();
                 }
                 break;
-            case ActionType.ClickToSetMoveable:
+            case ActionType.SetMoveable:
                 if(Input.GetMouseButtonDown(0))
                 {
                     playerScript.CanMove = true;
                     ShowNextText();
                 }
                 break;
-            case ActionType.ClickToSetShootable:
-                if(Input.GetKeyDown(KeyCode.Space))
+            case ActionType.SetShootable:
+                if(Input.GetMouseButtonDown(0))
                 {
                     playerScript.CanShoot = true;
                     ShowNextText();
                 }    
                 break;
             case ActionType.EnterToTrigger:
-                
-
+                if (isEnterTriggered)
+                {
+                    ShowNextText();
+                    isEnterTriggered = false; // 이벤트 처리 후 플래그 초기화
+                }
+                break;
+            case ActionType.SetDashable:
+                if(Input.GetMouseButtonDown(0))
+                {
+                    dashScript.enabled = true;
+                    ShowNextText();
+                }
+                break;
+            case ActionType.TextAutoSkip:
+                if (typingDone == true)
+                {
+                    StartCoroutine(TextDelay());
+                    ShowNextText();
+                    trigger.ActivateTrigger();
+                }
+                break;
+            case ActionType.KillEnemy:
+                if(enemyExist ==false) ShowNextText();
                 break;
             default:
                 break;
@@ -163,6 +202,39 @@ public class ScriptManager : MonoBehaviour
         }
 
         typingDone = true;
+    }
+
+
+    void CheckEnemy()
+    {
+        Transform parentObject = transform.parent;
+
+        if (parentObject != null)
+        {
+            // 부모 오브젝트의 자식 오브젝트 중 "enemy"라는 이름의 오브젝트를 찾음
+            Transform enemyObject = parentObject.Find("Enemy");
+
+            if (enemyObject != null)
+            {
+                // "enemy" 오브젝트의 자식 오브젝트가 없는지 확인
+                if (enemyObject.childCount == 0)
+                {
+                    // 트리거 조건이 충족되었을 때 실행할 코드
+                    NoEnemy();
+                }
+            }
+        }
+    }
+
+    void NoEnemy()
+    {
+        enemyExist = false;
+    }
+
+
+    IEnumerator TextDelay()
+    {
+        yield return new WaitForSeconds(3f);
     }
 
     public int GetElementCount()
