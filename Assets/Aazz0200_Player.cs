@@ -23,8 +23,10 @@ public class Aazz0200_Player : MonoBehaviour
     public float move_speed = 5;
     public Aazz0200_Act[] acts;
     public Aazz0200_Act act_now;
-    bool canShoot;
-    bool canMove;
+    [SerializeField]
+    bool canShoot = true;
+    [SerializeField]
+    bool canMove = true;
 
     public bool CanShoot
     {

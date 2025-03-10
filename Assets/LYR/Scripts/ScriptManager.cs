@@ -26,7 +26,10 @@ public enum ActionType
     EnterToTrigger,
     TextAutoSkip,
     KillEnemy,
-    SetDashable
+    SetDashable,
+    NextRTrigger,
+    TextAutoSkipAT,
+    Clickenough
 }
 
 public class ScriptManager : MonoBehaviour
@@ -51,6 +54,9 @@ public class ScriptManager : MonoBehaviour
     private Aazz0200_Player playerScript;
     private PlayerDash dashScript;
 
+    bool enoughTime;
+    float holdTime = 1.0f;
+    Coroutine clickCoroutine;
 
     void Start()
     {
@@ -61,6 +67,7 @@ public class ScriptManager : MonoBehaviour
     {
         ApplyTrigger();
         CheckEnemy();
+        CheckMouseClick();
     }
 
     //초기화
@@ -69,8 +76,21 @@ public class ScriptManager : MonoBehaviour
         GameObject playerObject = GameObject.FindWithTag("Player");
         playerScript = playerObject.GetComponent<Aazz0200_Player>();
         dashScript = playerObject.GetComponent<PlayerDash>();
+
+        string objectName = gameObject.name;
+
         trigger = GetComponent<Trigger>();
+
         enemyExist = true;
+
+        if(objectName == "R1 Text Manager")
+        {
+            playerScript.CanMove = false;
+            playerScript.CanShoot = false;
+            dashScript.enabled = false;
+        }
+
+
         if (trigger == null)
         {
             Debug.LogError("Trigger 스크립트를 찾을 수 없습니다.");
@@ -145,13 +165,32 @@ public class ScriptManager : MonoBehaviour
             case ActionType.TextAutoSkip:
                 if (typingDone == true)
                 {
-                    StartCoroutine(TextDelay());
-                    ShowNextText();
+                    Invoke("ShowNextText", 0.5f);
+
+                }
+                break;
+            case ActionType.TextAutoSkipAT:
+                if (typingDone == true)
+                {
+                    Invoke("ShowNextText", 0.5f);
                     trigger.ActivateTrigger();
                 }
                 break;
             case ActionType.KillEnemy:
                 if(enemyExist ==false) ShowNextText();
+                break;
+            case ActionType.NextRTrigger:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    trigger.ActivateTrigger();
+                    ShowNextText();
+                }
+                break;
+            case ActionType.Clickenough:
+                if(enoughTime == true)
+                {
+                    ShowNextText();
+                }    
                 break;
             default:
                 break;
@@ -231,11 +270,28 @@ public class ScriptManager : MonoBehaviour
         enemyExist = false;
     }
 
-
-    IEnumerator TextDelay()
+    void CheckMouseClick()
     {
-        yield return new WaitForSeconds(3f);
+        if (Input.GetMouseButtonDown(0)) // 클릭 시작
+        {
+            clickCoroutine = StartCoroutine(CheckHoldTime());
+        }
+
+        if (Input.GetMouseButtonUp(0)) // 클릭 종료
+        {
+            if (clickCoroutine != null)
+            {
+                StopCoroutine(clickCoroutine);
+            }
+            enoughTime = false; // 선택적: 뗄 때 false로 되돌리기
+        }
     }
+    IEnumerator CheckHoldTime()
+    {
+        yield return new WaitForSeconds(holdTime);
+        enoughTime = true;
+    }
+
 
     public int GetElementCount()
     {
