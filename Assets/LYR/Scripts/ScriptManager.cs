@@ -31,7 +31,8 @@ public enum ActionType
     TextAutoSkipAT,
     Clickenough,
     EnemyObON,
-    UseItem1
+    UseItem1,
+    RelicOn
 }
 
 public class ScriptManager : MonoBehaviour
@@ -62,6 +63,9 @@ public class ScriptManager : MonoBehaviour
 
     Transform parentObject;
 
+    GameObject playerObject;
+    bool isRelicActive;
+
     void Start()
     {
         Init();
@@ -72,12 +76,13 @@ public class ScriptManager : MonoBehaviour
         ApplyTrigger();
         CheckEnemy();
         CheckMouseClick();
+        CheckRelic();
     }
 
     //√ ±‚»≠
     void Init()
     {
-        GameObject playerObject = GameObject.FindWithTag("Player");
+        playerObject = GameObject.FindWithTag("Player");
         playerScript = playerObject.GetComponent<Aazz0200_Player>();
         dashScript = playerObject.GetComponent<PlayerDash>();
 
@@ -210,6 +215,12 @@ public class ScriptManager : MonoBehaviour
                     ShowNextText();
                 }
                 break;
+            case ActionType.RelicOn:
+                if(isRelicActive == true)
+                {
+                    ShowNextText();
+                }
+                break;
             default:
                 break;
         }
@@ -319,6 +330,18 @@ public class ScriptManager : MonoBehaviour
         enoughTime = true;
     }
 
+    void CheckRelic()
+    {
+        Transform relicRotate = playerObject.transform.Find("Relic_Rotate");
+        if (relicRotate != null)
+        {
+            Transform redRelic1 = relicRotate.Find("Red_Relic1");
+            if (redRelic1 != null)
+            {
+                isRelicActive = redRelic1.gameObject.activeInHierarchy;
+            }
+        }
+    }
 
     public int GetElementCount()
     {

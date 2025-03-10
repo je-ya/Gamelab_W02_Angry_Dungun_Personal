@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class Aazz0200_Life : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Aazz0200_Life : MonoBehaviour
     GameObject _yellowBossRelic; // 현우 보스 유물 
     public int _itemID; // 부위파괴 했을때 넘겨줄 아이템에 대한 정보 
 
+    
+
     public UnityEngine.Events.UnityEvent OnDeath;
     public UnityEngine.Events.UnityEvent OnHit;
 
@@ -24,6 +27,8 @@ public class Aazz0200_Life : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     float blinkInterval = 0.1f; // 깜빡이는 간격 (초 단위)
     float blinkDuration = 0.5f;
+
+
 
     private void Start()
     {
@@ -40,6 +45,8 @@ public class Aazz0200_Life : MonoBehaviour
             //_playerHp.maxValue = max;
             _playerHp.value = now / max;
         }
+
+        
     }
     private void Update()
     {
@@ -48,6 +55,8 @@ public class Aazz0200_Life : MonoBehaviour
 
         if (team == Team.Plyaer && now >= 100)
             now = 100;
+
+ 
     }
     public void Hit(float daage)
     {
@@ -57,6 +66,8 @@ public class Aazz0200_Life : MonoBehaviour
             _playerHp.value = now / max;
             StartCoroutine(Blink());
         }
+        
+
 
         if (now <= 0)
             OnDeath.Invoke();
@@ -142,4 +153,10 @@ public class Aazz0200_Life : MonoBehaviour
         // 블링크 효과가 끝난 후 스프라이트 렌더러를 켜진 상태로 유지
         spriteRenderer.enabled = true;
     }
+
+
+
+
+
+
 }
