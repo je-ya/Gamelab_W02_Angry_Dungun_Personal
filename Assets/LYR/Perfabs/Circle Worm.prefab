@@ -21,12 +21,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1905932459027443110, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905932459027443110, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905932459027443110, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 89.15651
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1905932459027443110, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -71.729935
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1905932459027443110, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -68,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3296025724463910983, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3331803687032570017, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
       propertyPath: team
       value: 1
@@ -94,6 +106,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5296576815843074245, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278046682903028148, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6355690296426431947, guid: 742435f5296f1e543b53f83181080d3f, type: 3}
@@ -150,4 +166,4 @@ MonoBehaviour:
   speed: 1.2
   spwanPoint: {x: 0, y: 0, z: 0}
   followerPrefab: {fileID: 4598854938251709946, guid: 68104d2d32c0a0c4baa3f01f00ff4b16, type: 3}
-  numFollowers: 20
+  numFollowers: 18

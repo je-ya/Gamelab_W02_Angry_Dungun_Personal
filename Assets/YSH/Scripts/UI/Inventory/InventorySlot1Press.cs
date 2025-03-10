@@ -9,7 +9,7 @@ public class InventorySlot1Press : MonoBehaviour
     UI_PlayerHp _playerHpSlider;
     Aazz0200_Life _playerHp;
 
-     ItemCount _itemCount;
+    ItemCount _itemCount;
     int _itemID;
 
     private void Awake()

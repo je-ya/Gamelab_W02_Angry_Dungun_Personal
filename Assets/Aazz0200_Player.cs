@@ -23,6 +23,21 @@ public class Aazz0200_Player : MonoBehaviour
     public float move_speed = 5;
     public Aazz0200_Act[] acts;
     public Aazz0200_Act act_now;
+    bool canShoot;
+    bool canMove;
+
+    public bool CanShoot
+    {
+        get { return canShoot; }
+        set { canShoot = value; }
+    }
+
+    public bool CanMove
+    {
+        get { return canMove; }
+        set { canMove = value; }
+    }
+
 
 
     // Start is called before the first frame update
@@ -31,23 +46,23 @@ public class Aazz0200_Player : MonoBehaviour
         acts = GetComponentsInChildren<Aazz0200_Act>();
         act_now = acts[0];
         Time.timeScale = 1;
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
         //¿Ãµø
-        float X = Input.GetAxisRaw("Horizontal");
-        float Y = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector2(X, Y).normalized * Time.deltaTime * move_speed);
+
+        if(canMove == true)
+        {
+            float X = Input.GetAxisRaw("Horizontal");
+            float Y = Input.GetAxisRaw("Vertical");
+            transform.Translate(new Vector2(X, Y).normalized * Time.deltaTime * move_speed);
+
+        }
 
 
-
-
-
-        if (Input.GetMouseButton(0))
+        if (canShoot == true&&Input.GetMouseButton(0))
         {
             var to = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             to.z = 0;

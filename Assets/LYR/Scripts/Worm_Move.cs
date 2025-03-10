@@ -36,7 +36,7 @@ public class Worm_Move : MonoBehaviour
     {
 
         for (int i = 0; i < followers.Count; i++)
-         Destroy  ( followers[i].gameObject);
+            Destroy(followers[i].gameObject);
     }
     void Update()
     {

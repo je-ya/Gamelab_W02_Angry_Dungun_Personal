@@ -92,7 +92,7 @@ public class KHW_SpawnManager : MonoBehaviour
         }
         else
         {
-            float posY = Random.Range(centerPosY -maxY, centerPosY + maxY);
+            float posY = Random.Range(centerPosY - maxY, centerPosY + maxY);
             Vector2 razorSpawnPosition = new Vector2(centerPosX, posY);
 
             Instantiate(razor, razorSpawnPosition, Quaternion.identity);

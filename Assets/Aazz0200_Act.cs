@@ -27,7 +27,7 @@ public class Aazz0200_Act : MonoBehaviour
     public float rayCoolDown = 3f;
     [SerializeField] private float elapsedRayTime = 0f;
     [SerializeField] private bool rayReady = false;
-    
+
 
     float _nomarlCol = 0.1f; // 아이템 먹었을때 다시 돌아올 연사 속도 
 
@@ -98,7 +98,7 @@ public class Aazz0200_Act : MonoBehaviour
                 go = Instantiate(defaultBulletPref, from, Quaternion.AngleAxis(angle - 90, Vector3.forward));
             }
 
-            if(rayReady)
+            if (rayReady)
             {
                 Instantiate(lightRelicRayPref, from, Quaternion.AngleAxis(angle, Vector3.forward));
 
@@ -112,7 +112,7 @@ public class Aazz0200_Act : MonoBehaviour
     //벌레 방패 관리
     public void ManageWormShield()
     {
-        if(wormRelicShieldObj == null)
+        if (wormRelicShieldObj == null)
         {
             Debug.LogWarning("WormRelicObj 없음. Player(Core) 하위 GameObject여야함.");
         }
@@ -120,25 +120,25 @@ public class Aazz0200_Act : MonoBehaviour
         if (_wormRelic == null)
             return;
 
-        if(!_wormRelic.RelicActive)
+        if (!_wormRelic.RelicActive)
         {
             return;
         }
 
         else
         {
-            if(!isWormShieldEnabled)
+            if (!isWormShieldEnabled)
             {
                 elapsedWormShieldTime += Time.deltaTime;
 
-                if(elapsedWormShieldTime > wormShieldCoolDown)
+                if (elapsedWormShieldTime > wormShieldCoolDown)
                 {
                     elapsedWormShieldTime = 0f;
                     wormRelicShieldObj.SetActive(true);
                     isWormShieldEnabled = true;
                 }
             }
-            
+
 
         }
     }
@@ -158,17 +158,17 @@ public class Aazz0200_Act : MonoBehaviour
         {
             return;
         }
-        if(!_lightRelic.RelicActive) //빛 렐릭 없음
+        if (!_lightRelic.RelicActive) //빛 렐릭 없음
         {
             return;
         }
         else
         {
-            if(!rayReady)
+            if (!rayReady)
             {
                 elapsedRayTime += Time.deltaTime;
 
-                if(elapsedRayTime > rayCoolDown)
+                if (elapsedRayTime > rayCoolDown)
                 {
                     elapsedRayTime = 0f;
                     rayReady = true;
@@ -176,5 +176,5 @@ public class Aazz0200_Act : MonoBehaviour
             }
         }
     }
-    
+
 }

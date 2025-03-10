@@ -1,7 +1,5 @@
 
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class GunAim : MonoBehaviour
 {
@@ -24,14 +22,14 @@ public class GunAim : MonoBehaviour
         //transform.rotation = Quaternion.LookRotation(to - transform.position);
         Vector3 dir = to - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle , Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 
 
         if (to.x < transform.position.x)
         {
-            if(transform.localScale.y>0)
-            transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+            if (transform.localScale.y > 0)
+                transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
         }
         else
         {

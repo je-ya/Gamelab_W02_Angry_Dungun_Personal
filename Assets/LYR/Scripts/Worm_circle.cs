@@ -4,8 +4,8 @@ using UnityEngine;
 public class Worm_circle : MonoBehaviour
 {
     public Transform target; // 따라갈 대상
-    public float fSpeed = 0.1f; // 부드러운 이동 속도
-    public int delay = 10; // 따라가는 딜레이 (프레임 단위)
+    public float fSpeed = 0.1f; // 부드러운 이동 속도 0.1
+    public int delay = 60; // 따라가는 딜레이 (프레임 단위) 10
 
     private Queue<Vector3> positions = new Queue<Vector3>(); // 위치 저장 큐
 

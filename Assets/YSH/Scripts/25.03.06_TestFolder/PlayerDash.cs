@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections; // 코루틴 사용을 위해 필요
+using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
@@ -42,7 +42,7 @@ public class PlayerDash : MonoBehaviour
 
         float X = Input.GetAxisRaw("Horizontal");
         float Y = Input.GetAxisRaw("Vertical");
-        dashDirection =  new Vector2(X, Y).normalized;
+        dashDirection = new Vector2(X, Y).normalized;
 
 
 

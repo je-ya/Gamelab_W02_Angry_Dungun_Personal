@@ -75,7 +75,7 @@ public class Aazz0200_Life : MonoBehaviour
         Instantiate(_iceBossRelic, transform.position, Quaternion.identity);
         Destroy(transform.parent.gameObject);
     }
-    
+
     public void IceBossHandDestroy()
     {
         // 손을 파괴 했을때 아이템이 들어오도록 설정 

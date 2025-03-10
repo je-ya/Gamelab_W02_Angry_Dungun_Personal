@@ -1381,6 +1381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uC801 \uC77C\uBC18 1"
       objectReference: {fileID: 0}
+    - target: {fileID: 4960293324565615577, guid: 3d4040921995a9e4783df3a65f2d7435, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5227683656272732829, guid: 3d4040921995a9e4783df3a65f2d7435, type: 3}
       propertyPath: speed
       value: 1

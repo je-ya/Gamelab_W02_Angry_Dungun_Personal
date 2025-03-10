@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Worm_Forward : MonoBehaviour
@@ -33,8 +32,12 @@ public class Worm_Forward : MonoBehaviour
     void Update()
     {
 
+
+        bool ischek = Physics2D.CircleCast(transform.position, 3, transform.up, 3, CheckLayer);
         switch (currentState)
         {
+
+
             case PlayerState.Idle:
                 MoveFwd();
                 break;
@@ -50,12 +53,20 @@ public class Worm_Forward : MonoBehaviour
                 float fastSpeed = speed * 5f;
                 Vector3 fastMovement = transform.up * Time.deltaTime * fastSpeed;
                 transform.position += fastMovement;
+
+
+                if (ischek)
+                    transform.Rotate(transform.forward, Random.RandomRange(-180, 180));//  direction *= -1;
+
                 break;
 
             case PlayerState.Slow:
                 float slowSpeed = speed * 0.5f;
                 Vector3 slowMovement = transform.up * Time.deltaTime * slowSpeed;
                 transform.position += slowMovement;
+
+                if (ischek)
+                    transform.Rotate(transform.forward, Random.RandomRange(-180, 180));//  direction *= -1;
                 break;
 
             default:

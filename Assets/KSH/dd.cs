@@ -40,7 +40,7 @@ public class dd : MonoBehaviour
 
         yield return new WaitForSeconds(0);
 
-       if(ddd) ddd.SetActive(true);
+        if (ddd) ddd.SetActive(true);
 
     }
 

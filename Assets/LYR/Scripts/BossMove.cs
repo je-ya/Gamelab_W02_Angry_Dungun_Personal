@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class BossMove : MonoBehaviour
 {
@@ -56,8 +56,8 @@ public class BossMove : MonoBehaviour
         //만약에 Center 오브젝트를 못찾으면 에러 메세지 출력
         //반경은 변수로 만들어서 수정 할 수 있도록, 그리고 public말고 private에 SerializeField해서 스크립트에서 수치는 체크 가능하도록
         //일단 다 쓰고 난뒤에 이렇게 쓰면 되는건지 물어보자
-        
-        if (centerPosion != null )
+
+        if (centerPosion != null)
         {
             float randomX = Random.Range(xMax, xMin);
             float randomY = Random.Range(yMax, yMin);
