@@ -37,8 +37,8 @@ public enum ActionType
 
 public class ScriptManager : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI textMeshPro;    // TextMeshProUGUI 컴포넌트
+    
+    public TextMeshProUGUI textMeshPro;    // TextMeshProUGUI 컴포넌트
 
     [SerializeField]
     private List<TextElement> textElements; // 텍스트 요소 리스트
