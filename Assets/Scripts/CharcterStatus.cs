@@ -30,20 +30,20 @@ public abstract class CharcterStatus : MonoBehaviour
 
 
 
-    void TakeDamage()
+    void TakeDamage(float damage)
     {
-        float damage = GetHitDamageForSkill();
+        //float damage = GetHitDamageForSkill();
         ReduceHP(damage);
     }
 
-    void GetHeal()
+    void GetHeal(float damage)
     {
-        float damage = GetHealDamageForSkill();
+        //float damage = GetHealDamageForSkill();
         IncreaseHp(damage);
     }
 
 
-    float GetHitDamageForSkill()
+/*    float GetHitDamageForSkill()
     {
         return 0f;
     }
@@ -51,7 +51,7 @@ public abstract class CharcterStatus : MonoBehaviour
     float GetHealDamageForSkill()
     {
         return 0f;
-    }
+    }*/
 
 
     void ReduceHP(float damage)

@@ -1,0 +1,39 @@
+{
+  "skills": [
+    {
+      "name": "IdleAttack",
+      "type": "Attack",
+      "hitRate": 85,
+      "damageModi": 85,
+      "increaseValue": 0
+    },
+    {
+      "name": "IdleHeal",
+      "type": "Heal",
+      "hitRate": 100,
+      "damageModi": 85,
+      "increaseValue": 0
+    },
+    {
+      "name": "IdleDefenseUp",
+      "type": "DefenseUp",
+      "hitRate": 0,
+      "damageModi": -100,
+      "increaseValue": 5
+    },
+    {
+      "name": "IdlePowerUp",
+      "type": "PowerUp",
+      "hitRate": 0,
+      "damageModi": -100,
+      "increaseValue": 5
+    },
+    {
+      "name": "IdleEvasionUp",
+      "type": "EvasionUp",
+      "hitRate": 0,
+      "damageModi": -100,
+      "increaseValue": 5
+    }
+  ]
+}
