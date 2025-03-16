@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+//이동과 전투 상태를 관리
 public class StateManager : MonoBehaviour
 {
     public static StateManager Instance => _instance;

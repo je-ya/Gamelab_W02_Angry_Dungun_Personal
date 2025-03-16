@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using static System.TimeZoneInfo;
 
+//이동에서 전투로 전환될 때 카메라 전환
 public class ChangeCamera : MonoBehaviour
 {
 

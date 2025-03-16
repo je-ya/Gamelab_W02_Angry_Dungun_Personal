@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+//적이 캐릭터와 조우 했을 때, 전투가 발생
 public class CheckPlayer : MonoBehaviour
 {
     ChangeCamera cameraController;

@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Collections;
 using System;
 
+
+//턴 정의 및 턴이 돌아가도록 함
 public class BettleManager : MonoBehaviour
 {
     public static BettleManager Instance => _instance;
     static BettleManager _instance;
+
+
 
     [System.Serializable]
     enum BattleState

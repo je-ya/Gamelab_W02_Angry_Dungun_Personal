@@ -1,5 +1,8 @@
 using UnityEngine;
 
+
+//캐릭터가 일정 거리를 움직이면 스트레스가 증가하는 이벤트가 발생하게 함
+//디버그 로그가 있는 칸에서 해당 캐릭터의 스트레스 수치를 줄이는 함수 호출
 public class MoveStress : MonoBehaviour
 {
     float playerLastXPoint;

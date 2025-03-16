@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+
+    public Action<float> Damage;
+
     private void Awake()
     {
         LoadSkillDataFromJson();
@@ -13,7 +17,6 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
-
         PrintSkillData();
     }
 
@@ -35,6 +38,7 @@ public class SkillManager : MonoBehaviour
     }
 
     Dictionary<string, Skill> skillDataMap = new Dictionary<string, Skill>();
+    //
 
     void LoadSkillDataFromJson()
     {
@@ -80,6 +84,16 @@ public class SkillManager : MonoBehaviour
         }
         Debug.Log("==========================");
     }
+
+
+
+
+
+
+
+
+
+
 
     //스킬 타입이랑 스킬 이름 딕셔너리(타입, 리스트(이름))
     //private Dictionary<string, List<string>> skillCategorie = new Dictionary<string, List<string>>

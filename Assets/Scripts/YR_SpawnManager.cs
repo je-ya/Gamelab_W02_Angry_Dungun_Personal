@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-
+//몬스터 스포너, 안 쓸수도 있음
 public class YR_SpawnManager : MonoBehaviour
 {
 

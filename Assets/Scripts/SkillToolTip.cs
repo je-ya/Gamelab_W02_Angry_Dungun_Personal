@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+//버튼 위에 마우스가 올라갔을 때, 툴팁 표시
 public class SkillToolTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     UI_Skill1_Info _ui_Skill1_Info;

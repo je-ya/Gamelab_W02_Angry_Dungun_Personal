@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+//캐릭터의 A,D(좌우) 움직임
 public class PlayerMove : MonoBehaviour
 {
     private Rigidbody2D rb;
