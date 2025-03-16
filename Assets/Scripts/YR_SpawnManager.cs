@@ -20,7 +20,7 @@ public class YR_SpawnManager : MonoBehaviour
         public GameObject enemyType; // 스폰할 오브젝트
         public Vector3 spawnPoint;       // 스폰 위치 (Vector3로 변경)
         public Quaternion rotation;
-        public Worm_Forward.PlayerState state;
+        //public Worm_Forward.PlayerState state;
     }
 
     public GameObject nomal_enemy;
@@ -56,7 +56,7 @@ public class YR_SpawnManager : MonoBehaviour
 
     void init()
     {
-        centerPosion = FindAnyObjectByType<CheckCenterOfMap>().transform.position;
+        //centerPosion = FindAnyObjectByType<CheckCenterOfMap>().transform.position;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         xMax = centerPosion.x + radius;
@@ -101,11 +101,11 @@ public class YR_SpawnManager : MonoBehaviour
 
                 GameObject spawnedEnemy = Instantiate(spawnData.enemyType, worldSpawnPoint, worldSpawnRotate);
 
-                Worm_Forward fwdMovescript = spawnedEnemy.transform.GetChild(0).GetComponent<Worm_Forward>();
+                //Worm_Forward fwdMovescript = spawnedEnemy.transform.GetChild(0).GetComponent<Worm_Forward>();
                 spawnedEnemy.transform.parent = transform;
                 spawnedEnemy.transform.position = new Vector3(spawnedEnemy.transform.position.x, spawnedEnemy.transform.position.y, 0);
 
-                if (fwdMovescript != null)
+/*                if (fwdMovescript != null)
                 {
                     fwdMovescript.currentState = spawnData.state;
                     Debug.Log(spawnData.state);
@@ -113,7 +113,7 @@ public class YR_SpawnManager : MonoBehaviour
                 else
                 {
                     Debug.LogWarning($"Spawned enemy {spawnedEnemy.name} does not have Worm_Forward component!");
-                }
+                }*/
             }
             else
             {

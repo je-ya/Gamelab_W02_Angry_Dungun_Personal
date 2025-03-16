@@ -3,7 +3,7 @@ using UnityEngine;
 public class HitEffect : MonoBehaviour
 {
     public ParticleSystem hitParticlePrefab;
-    private void OnTriggerEnter(Collider other)
+/*    private void OnTriggerEnter(Collider other)
     {
         // Ãæµ¹ÇÑ °´Ã¼¿¡¼­ Team ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿È
         Aazz0200_Damager teamObject = other.GetComponent<Aazz0200_Damager>();
@@ -23,6 +23,6 @@ public class HitEffect : MonoBehaviour
                 //Destroy(particle.gameObject, particle.main.duration);
             }
         }
-    }
+    }*/
 }
 

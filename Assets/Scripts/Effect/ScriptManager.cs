@@ -52,10 +52,10 @@ public class ScriptManager : MonoBehaviour
     bool isEnterTriggered;
     [SerializeField]
     bool enemyExist;
-    Trigger trigger;
+    //Trigger trigger;
 
-    private Aazz0200_Player playerScript;
-    private PlayerDash dashScript;
+    //private Aazz0200_Player playerScript;
+    //private PlayerDash dashScript;
 
     bool enoughTime;
     float holdTime = 1.0f;
@@ -73,7 +73,7 @@ public class ScriptManager : MonoBehaviour
 
     void Update()
     {
-        ApplyTrigger();
+        //ApplyTrigger();
         CheckEnemy();
         CheckMouseClick();
         CheckRelic();
@@ -82,7 +82,7 @@ public class ScriptManager : MonoBehaviour
     //초기화
     void Init()
     {
-        playerObject = GameObject.FindWithTag("Player");
+/*        playerObject = GameObject.FindWithTag("Player");
         playerScript = playerObject.GetComponent<Aazz0200_Player>();
         dashScript = playerObject.GetComponent<PlayerDash>();
 
@@ -99,13 +99,13 @@ public class ScriptManager : MonoBehaviour
             playerScript.CanMove = false;
             playerScript.CanShoot = false;
             dashScript.enabled = false;
-        }
+        }*/
 
 
-        if (trigger == null)
+/*        if (trigger == null)
         {
             Debug.LogError("Trigger 스크립트를 찾을 수 없습니다.");
-        }
+        }*/
 
         //TextMeshProUGUI 가져오기
         if (textMeshPro == null)
@@ -124,7 +124,7 @@ public class ScriptManager : MonoBehaviour
         }
     }
 
-    
+/*    
     void ApplyTrigger()
     {
         if (!typingDone || currentIndex < 0 || currentIndex >= textElements.Count) return;
@@ -224,7 +224,7 @@ public class ScriptManager : MonoBehaviour
             default:
                 break;
         }
-    }
+    }*/
 
     //요소마다 바꿔둔 transform 적용하기
     void ApplyTextProperties(int index)
