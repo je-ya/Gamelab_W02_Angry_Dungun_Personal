@@ -1,18 +1,31 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.TextCore.Text;
 
-//스킬 매니저, 스킬 목록은 json파일 사용, 스킬을 추가할거면, json파일에 데이터를 추가하고,
-//skillCategorie 딕셔너리에 해당 스킬 이름 종류에 따라서 추가
+//스킬 매니저, 스킬 목록은 json파일 사용, 스킬을 추가할거면, json파일에 데이터를 추가
 
 public class SkillManager : MonoBehaviour
 {
+    public static SkillManager Instance { get; private set; }
 
-    public Action<float> Damage;
+    public void ExecuteSkill(string skillName, Character user, Character target)
+    {
+        Debug.Log($"{skillName} 스킬 실행: {user.stats.characterName} -> {target.stats.characterName}");
+    }
+
+
+
 
     private void Awake()
     {
-        LoadSkillDataFromJson();
+        if (Instance == null)
+        {
+            Instance = this;
+            LoadSkillDataFromJson();
+        }
+
     }
 
     private void Start()
@@ -28,7 +41,7 @@ public class SkillManager : MonoBehaviour
         public string type;
         public float hitRate;
         public float damageModi;
-        public float increaseValue;
+        public int increaseValue;
     }
 
     [System.Serializable]
@@ -38,11 +51,10 @@ public class SkillManager : MonoBehaviour
     }
 
     Dictionary<string, Skill> skillDataMap = new Dictionary<string, Skill>();
-    //
 
     void LoadSkillDataFromJson()
     {
-        TextAsset jsonData = Resources.Load<TextAsset>("skillInfo");
+        UnityEngine.TextAsset jsonData = Resources.Load<UnityEngine.TextAsset>("skillInfo");
         if (jsonData != null)
         {
             //Debug.Log("JSON 내용: " + jsonData.text); // 디버깅용
@@ -86,11 +98,93 @@ public class SkillManager : MonoBehaviour
     }
 
 
+    public Skill GetSkillData(string skillName)
+    {
+        if (skillDataMap.TryGetValue(skillName, out Skill skill))
+        {
+            return skill;
+        }
+        Debug.LogWarning($"Skill '{skillName}' not found in skillDataMap.");
+        return null;
+    }
+
+    public TextMeshProUGUI tmpText;
+
+    public float CalculateDamage(Character user, Character target, Skill skill)
+    {
+        float damage = 0f;
+        Character userStats = user;
+        Character targetStats = target;
+        Skill skillStats = skill;
+        float persent = skill.hitRate - target.stats.evasion;
+        int valueR = UnityEngine.Random.Range(0, 100);
+        int valueCR = UnityEngine.Random.Range(0, 100);
+        if (valueR <= persent)
+        {
+            if (userStats != null)
+            {
+                if(valueCR <= user.stats.criticalChance) {
+                    damage += (userStats.stats.attack * (skill.damageModi * 0.01f) * ((100 - targetStats.stats.defense) * 0.01f)*1.5f);
+                    Debug.Log("크리티컬!");
+                    tmpText.text = "크리티컬!";
+                    Invoke("ClearText", 0.5f);
+                }
+                else
+                damage += (userStats.stats.attack * (skill.damageModi * 0.01f) * ((100 - targetStats.stats.defense) * 0.01f));
+            }
+        }
+        else if (valueR > persent && valueR < skill.hitRate)
+        {
+            Debug.Log("회피");
+            float increaseProbability = 15f;
+            float chance = Random.Range(0f, 100f);
+            if (chance <= increaseProbability)
+            {
+                user.TakeSDamage(damage);
+                Debug.Log($"[{gameObject.name}]스트레스 {damage}증가!!");
+            }
+            tmpText.text = "회피";
+            Invoke("ClearText", 0.5f); // 2초 후 ClearText 호출
+        }
+        else
+        {
+            Debug.Log("빗나감");
+            float increaseProbability = 15f;
+            float chance = Random.Range(0f, 100f);
+            if (chance <= increaseProbability)
+            {
+                user.TakeSDamage(damage);
+                Debug.Log($"[{gameObject.name}]스트레스 {damage}증가!!");
+            }
+
+            tmpText.text = "빗나감";
+            Invoke("ClearText", 0.5f); // 2초 후 ClearText 호출
+        }
+
+        return damage;
+    }
 
 
+    public float CalculateHDamage(Character user, Character target, Skill skill)
+    {
+        float damage = 0f;
+        Character userStats = user;
+        Character targetStats = target;
+        Skill skillStats = skill;
+
+        if (userStats != null)
+        {
+            damage += (userStats.stats.attack * (skill.damageModi * 0.01f));
+        }
 
 
+        return damage;
+    }
 
+    private void ClearText()
+    {
+        tmpText.text = "";
+    }
 
 
 

@@ -1,7 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.Rendering;
 
 public class Aazz0200_Life : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class Aazz0200_Life : MonoBehaviour
     GameObject _yellowBossRelic; // 현우 보스 유물 
     public int _itemID; // 부위파괴 했을때 넘겨줄 아이템에 대한 정보 
 
-    
+
 
     public UnityEngine.Events.UnityEvent OnDeath;
     public UnityEngine.Events.UnityEvent OnHit;
@@ -46,7 +45,7 @@ public class Aazz0200_Life : MonoBehaviour
             _playerHp.value = now / max;
         }
 
-        
+
     }
     private void Update()
     {
@@ -56,7 +55,7 @@ public class Aazz0200_Life : MonoBehaviour
         if (team == Team.Plyaer && now >= 100)
             now = 100;
 
- 
+
     }
     public void Hit(float daage)
     {
@@ -66,7 +65,7 @@ public class Aazz0200_Life : MonoBehaviour
             _playerHp.value = now / max;
             StartCoroutine(Blink());
         }
-        
+
 
 
         if (now <= 0)

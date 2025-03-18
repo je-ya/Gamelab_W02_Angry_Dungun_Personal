@@ -1,7 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using System;
-using static System.TimeZoneInfo;
 
 //이동에서 전투로 전환될 때 카메라 전환
 public class ChangeCamera : MonoBehaviour
@@ -27,7 +24,7 @@ public class ChangeCamera : MonoBehaviour
 
     public void SwitchCamera()
     {
-        if(mainCamera != null && battleCamera != null)
+        if (mainCamera != null && battleCamera != null)
         {
             mainCamera.enabled = !mainCamera.enabled; // mainCamera 비활성화
             battleCamera.enabled = !battleCamera.enabled; // battleCamera 활성화

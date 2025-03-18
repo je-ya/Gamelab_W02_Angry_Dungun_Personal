@@ -1,11 +1,12 @@
 using UnityEngine;
-using System;
+using UnityEngine.UI;
 
 //이동과 전투 상태를 관리
 public class StateManager : MonoBehaviour
 {
     public static StateManager Instance => _instance;
     static StateManager _instance;
+
 
     bool inBattle = false;
 
@@ -18,16 +19,18 @@ public class StateManager : MonoBehaviour
     public void StartBattle()
     {
         inBattle = true;
+
     }
-    
+
     public void EndBattle()
     {
         inBattle = false;
-    }    
+
+    }
 
     public bool CheckBattleActive()
     {
         return inBattle;
-    }    
+    }
 
 }

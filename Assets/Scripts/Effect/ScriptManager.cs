@@ -1,7 +1,7 @@
-using UnityEngine;
-using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 
 [System.Serializable]
 public class TextElement
@@ -37,7 +37,7 @@ public enum ActionType
 
 public class ScriptManager : MonoBehaviour
 {
-    
+
     public TextMeshProUGUI textMeshPro;    // TextMeshProUGUI 컴포넌트
 
     [SerializeField]
@@ -82,30 +82,30 @@ public class ScriptManager : MonoBehaviour
     //초기화
     void Init()
     {
-/*        playerObject = GameObject.FindWithTag("Player");
-        playerScript = playerObject.GetComponent<Aazz0200_Player>();
-        dashScript = playerObject.GetComponent<PlayerDash>();
+        /*        playerObject = GameObject.FindWithTag("Player");
+                playerScript = playerObject.GetComponent<Aazz0200_Player>();
+                dashScript = playerObject.GetComponent<PlayerDash>();
 
-        string objectName = gameObject.name;
+                string objectName = gameObject.name;
 
-        parentObject = transform.parent;
+                parentObject = transform.parent;
 
-        trigger = GetComponent<Trigger>();
+                trigger = GetComponent<Trigger>();
 
-        enemyExist = true;
+                enemyExist = true;
 
-        if(objectName == "R1 Text Manager")
-        {
-            playerScript.CanMove = false;
-            playerScript.CanShoot = false;
-            dashScript.enabled = false;
-        }*/
+                if(objectName == "R1 Text Manager")
+                {
+                    playerScript.CanMove = false;
+                    playerScript.CanShoot = false;
+                    dashScript.enabled = false;
+                }*/
 
 
-/*        if (trigger == null)
-        {
-            Debug.LogError("Trigger 스크립트를 찾을 수 없습니다.");
-        }*/
+        /*        if (trigger == null)
+                {
+                    Debug.LogError("Trigger 스크립트를 찾을 수 없습니다.");
+                }*/
 
         //TextMeshProUGUI 가져오기
         if (textMeshPro == null)
@@ -124,107 +124,107 @@ public class ScriptManager : MonoBehaviour
         }
     }
 
-/*    
-    void ApplyTrigger()
-    {
-        if (!typingDone || currentIndex < 0 || currentIndex >= textElements.Count) return;
-
-        TextElement currentElement = textElements[currentIndex];
-
-        switch (currentElement.actionToNext)
+    /*    
+        void ApplyTrigger()
         {
-            case ActionType.MouseClick: //마우스 클릭 시 다음 스크립트 출력
-                if (Input.GetMouseButtonDown(0))
-                {
-                    ShowNextText();
-                }
-                break;
-            case ActionType.SpaceBar: //스페이스바 입력 시 다음 스크립트 출력
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    ShowNextText();
-                }
-                break;
-            case ActionType.SetMoveable: //마우스 클릭 시 캐릭터 움직임&다음 스크립트 출력
-                if(Input.GetMouseButtonDown(0))
-                {
-                    playerScript.CanMove = true;
-                    ShowNextText();
-                }
-                break;
-            case ActionType.SetShootable: //마우스 클릭 시 발사 가능&다음 스크립트 출력
-                if (Input.GetMouseButtonDown(0))
-                {
-                    playerScript.CanShoot = true;
-                    ShowNextText();
-                }    
-                break;
-            case ActionType.EnterToTrigger:  //트리거에 닿으면 다음 스크립트 출력
-                if (isEnterTriggered)
-                {
-                    ShowNextText();
-                    isEnterTriggered = false; // 이벤트 처리 후 플래그 초기화
-                }
-                break;
-            case ActionType.SetDashable:  //마우스 클릭 시 대쉬 가능&다음 스크립트 출력
-                if (Input.GetMouseButtonDown(0))
-                {
-                    dashScript.enabled = true;
-                    ShowNextText();
-                }
-                break;
-            case ActionType.TextAutoSkip:  //타이핑이 끝나고 0.5초 뒤에 다음 스크립트 출력
-                if (typingDone == true)
-                {
-                    Invoke("ShowNextText", 1f);
-                }
-                break;
-            case ActionType.TextAutoSkipAT:  //타이핑이 끝나고 0.5초 뒤에 다음 스크립트 출력&오브젝트의 트리거 실행
-                if (typingDone == true)
-                {
-                    Invoke("ShowNextText", 0.5f);
-                    trigger.ActivateTrigger();
-                }
-                break;
-            case ActionType.KillEnemy:  //맵의 Enemy의 자식 오브젝트가 없으면 다음 스크립트 출력
-                if(enemyExist ==false) ShowNextText();
-                break;
-            case ActionType.NextRTrigger:  //마우스 클릭 시 다음 스크립트 출력 & 오브젝트의 트리거 실행
-                if (Input.GetMouseButtonDown(0))
-                {
-                    trigger.ActivateTrigger();
-                    ShowNextText();
-                }
-                break;
-            case ActionType.Clickenough:  //마우스 클릭이 일정 시간 지속되면 다음 스크립트 출력
-                if(enoughTime == true)
-                {
-                    ShowNextText();
-                }    
-                break;
-            case ActionType.EnemyObON:
-                if (Input.GetMouseButtonDown(0)) 
-                {
-                    EnemyOn();
-                    ShowNextText();
-                }
-                break;
-            case ActionType.UseItem1:
-                if(Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    ShowNextText();
-                }
-                break;
-            case ActionType.RelicOn:
-                if(isRelicActive == true)
-                {
-                    ShowNextText();
-                }
-                break;
-            default:
-                break;
-        }
-    }*/
+            if (!typingDone || currentIndex < 0 || currentIndex >= textElements.Count) return;
+
+            TextElement currentElement = textElements[currentIndex];
+
+            switch (currentElement.actionToNext)
+            {
+                case ActionType.MouseClick: //마우스 클릭 시 다음 스크립트 출력
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ShowNextText();
+                    }
+                    break;
+                case ActionType.SpaceBar: //스페이스바 입력 시 다음 스크립트 출력
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        ShowNextText();
+                    }
+                    break;
+                case ActionType.SetMoveable: //마우스 클릭 시 캐릭터 움직임&다음 스크립트 출력
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        playerScript.CanMove = true;
+                        ShowNextText();
+                    }
+                    break;
+                case ActionType.SetShootable: //마우스 클릭 시 발사 가능&다음 스크립트 출력
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        playerScript.CanShoot = true;
+                        ShowNextText();
+                    }    
+                    break;
+                case ActionType.EnterToTrigger:  //트리거에 닿으면 다음 스크립트 출력
+                    if (isEnterTriggered)
+                    {
+                        ShowNextText();
+                        isEnterTriggered = false; // 이벤트 처리 후 플래그 초기화
+                    }
+                    break;
+                case ActionType.SetDashable:  //마우스 클릭 시 대쉬 가능&다음 스크립트 출력
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        dashScript.enabled = true;
+                        ShowNextText();
+                    }
+                    break;
+                case ActionType.TextAutoSkip:  //타이핑이 끝나고 0.5초 뒤에 다음 스크립트 출력
+                    if (typingDone == true)
+                    {
+                        Invoke("ShowNextText", 1f);
+                    }
+                    break;
+                case ActionType.TextAutoSkipAT:  //타이핑이 끝나고 0.5초 뒤에 다음 스크립트 출력&오브젝트의 트리거 실행
+                    if (typingDone == true)
+                    {
+                        Invoke("ShowNextText", 0.5f);
+                        trigger.ActivateTrigger();
+                    }
+                    break;
+                case ActionType.KillEnemy:  //맵의 Enemy의 자식 오브젝트가 없으면 다음 스크립트 출력
+                    if(enemyExist ==false) ShowNextText();
+                    break;
+                case ActionType.NextRTrigger:  //마우스 클릭 시 다음 스크립트 출력 & 오브젝트의 트리거 실행
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        trigger.ActivateTrigger();
+                        ShowNextText();
+                    }
+                    break;
+                case ActionType.Clickenough:  //마우스 클릭이 일정 시간 지속되면 다음 스크립트 출력
+                    if(enoughTime == true)
+                    {
+                        ShowNextText();
+                    }    
+                    break;
+                case ActionType.EnemyObON:
+                    if (Input.GetMouseButtonDown(0)) 
+                    {
+                        EnemyOn();
+                        ShowNextText();
+                    }
+                    break;
+                case ActionType.UseItem1:
+                    if(Input.GetKeyDown(KeyCode.Alpha1))
+                    {
+                        ShowNextText();
+                    }
+                    break;
+                case ActionType.RelicOn:
+                    if(isRelicActive == true)
+                    {
+                        ShowNextText();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }*/
 
     //요소마다 바꿔둔 transform 적용하기
     void ApplyTextProperties(int index)
@@ -300,8 +300,8 @@ public class ScriptManager : MonoBehaviour
         {
             Transform enemyObject = parentObject.Find("Enemy");
             enemyObject.gameObject.SetActive(true);
-        }    
-    }    
+        }
+    }
 
     void NoEnemy()
     {

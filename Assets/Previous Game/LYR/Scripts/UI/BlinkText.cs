@@ -1,7 +1,6 @@
 using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 
 public class BlinkText : MonoBehaviour
@@ -17,13 +16,13 @@ public class BlinkText : MonoBehaviour
 
     public IEnumerator Blink()
     {
-        while(true)
+        while (true)
         {
 
             blinkText.text = "> Game Start?";
             yield return new WaitForSeconds(.5f);
             blinkText.text = "  Game Start?";
             yield return new WaitForSeconds(.5f);
-        }    
+        }
     }
 }

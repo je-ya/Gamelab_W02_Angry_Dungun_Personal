@@ -283,7 +283,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 41
+  m_SortingOrder: 6
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   m_FlipX: 0
@@ -600,7 +600,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1667123687859864797, guid: 1b55a462307609b44ad2ca8d7c116f2c, type: 3}
       propertyPath: m_Name
-      value: hareubang
+      value: Hareubang
       objectReference: {fileID: 0}
     - target: {fileID: 4670968074353973340, guid: 1b55a462307609b44ad2ca8d7c116f2c, type: 3}
       propertyPath: m_Color.b
@@ -614,9 +614,17 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6792453
       objectReference: {fileID: 0}
+    - target: {fileID: 5612409896304454386, guid: 1b55a462307609b44ad2ca8d7c116f2c, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fd20957c3bde3f4d80a1ebffdd0a573, type: 2}
+    - target: {fileID: 6263156609655246734, guid: 1b55a462307609b44ad2ca8d7c116f2c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -340.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6760248713633902376, guid: 1b55a462307609b44ad2ca8d7c116f2c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 6760248713633902376, guid: 1b55a462307609b44ad2ca8d7c116f2c, type: 3}
       propertyPath: m_LocalPosition.y

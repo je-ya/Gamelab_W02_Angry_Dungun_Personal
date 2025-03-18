@@ -34,6 +34,27 @@
       "hitRate": 0,
       "damageModi": -100,
       "increaseValue": 5
+    },
+    {
+      "name": "EnemyAttack",
+      "type": "Attack",
+      "hitRate": 85,
+      "damageModi": 60,
+      "increaseValue": 0
+    },
+    {
+      "name": "EnemyAttackW",
+      "type": "Attack",
+      "hitRate": 85,
+      "damageModi": 85,
+      "increaseValue": 0
+    },
+    {
+      "name": "BossAttackW",
+      "type": "Attack",
+      "hitRate": 85,
+      "damageModi": 100,
+      "increaseValue": 0
     }
   ]
 }

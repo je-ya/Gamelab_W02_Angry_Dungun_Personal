@@ -39,7 +39,7 @@ public class YR_SpawnManager : MonoBehaviour
     float radius = 39f;
 
 
-    
+
 
     [SerializeField]
     private SpawnData[] enemyList;
@@ -68,8 +68,8 @@ public class YR_SpawnManager : MonoBehaviour
 
     void BossSpawn()
     {
-        if (boss != null) 
-        { 
+        if (boss != null)
+        {
             // 두 위치 중 하나를 랜덤으로 선택
             int randomIndex = UnityEngine.Random.Range(0, 2); // 0 또는 1
             Vector3 spawnPosition = bossSpawnPositions[randomIndex];
@@ -105,15 +105,15 @@ public class YR_SpawnManager : MonoBehaviour
                 spawnedEnemy.transform.parent = transform;
                 spawnedEnemy.transform.position = new Vector3(spawnedEnemy.transform.position.x, spawnedEnemy.transform.position.y, 0);
 
-/*                if (fwdMovescript != null)
-                {
-                    fwdMovescript.currentState = spawnData.state;
-                    Debug.Log(spawnData.state);
-                }
-                else
-                {
-                    Debug.LogWarning($"Spawned enemy {spawnedEnemy.name} does not have Worm_Forward component!");
-                }*/
+                /*                if (fwdMovescript != null)
+                                {
+                                    fwdMovescript.currentState = spawnData.state;
+                                    Debug.Log(spawnData.state);
+                                }
+                                else
+                                {
+                                    Debug.LogWarning($"Spawned enemy {spawnedEnemy.name} does not have Worm_Forward component!");
+                                }*/
             }
             else
             {
@@ -126,7 +126,8 @@ public class YR_SpawnManager : MonoBehaviour
 
     IEnumerator SpawnnomalWorm()
     {
-        if (nomal_enemy != null) {
+        if (nomal_enemy != null)
+        {
             yield return new WaitForSeconds(spawnDelay_N);
 
             while (gameObject.activeInHierarchy)
@@ -149,9 +150,9 @@ public class YR_SpawnManager : MonoBehaviour
                 yield return new WaitForSeconds(spawnInterval_N);
             }
         }
-    }    
-
-
     }
+
+
+}
 
 

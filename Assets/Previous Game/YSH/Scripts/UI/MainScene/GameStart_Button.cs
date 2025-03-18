@@ -19,6 +19,6 @@ public class GameStart_Button : MonoBehaviour
         // 씬 넘기고 
         SceneManager.LoadScene("InGame");
     }
-    
+
 
 }

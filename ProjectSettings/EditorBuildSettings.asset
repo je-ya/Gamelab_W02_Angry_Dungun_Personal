@@ -6,17 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Previous Game/Main2.unity
-    guid: f157b1c169e7a9149915a740c819f460
-  - enabled: 1
-    path: Assets/Previous Game/Tutorial.unity
-    guid: 577278d86339d324d9cfbc7efb2dbfce
-  - enabled: 1
-    path: Assets/Previous Game/InGame.unity
-    guid: cd35923ed08dcbe44ac77147426dcbab
-  - enabled: 1
-    path: Assets/Previous Game/Main3.unity
-    guid: 967d6253076c84144b6e25ed5eecd79d
+    path: Assets/Scenes/combatScene.unity
+    guid: deb3c10857814d848aa520672596fbdf
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

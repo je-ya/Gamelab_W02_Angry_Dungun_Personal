@@ -1,36 +1,56 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-
-//적이 캐릭터와 조우 했을 때, 전투가 발생
 public class CheckPlayer : MonoBehaviour
 {
-    ChangeCamera cameraController;
+
     GameObject enemy;
+    Transform player;
+    float detectionDistance = 15f;
+    float checkInterval = 0.2f; // 0.2초마다 체크
+     Canvas trun;
 
     void Start()
     {
-        cameraController = FindObjectOfType<ChangeCamera>();
-        Transform spawnerTransform = transform.Find("Spwaner");
+
+        Transform spawnerTransform = gameObject.transform;
         enemy = spawnerTransform.gameObject;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject trunOb = FindObjectOfType<Turn>().GetComponent<Turn>().gameObject;
+        trun = trunOb.GetComponent<Canvas>();
+
+        // 반복적으로 CheckDistance 호출 시작
+        InvokeRepeating("CheckDistance", 0f, checkInterval);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void CheckDistance()
     {
-        
-        if (other.CompareTag("Player"))
+        if (player != null && Vector2.Distance(transform.position, player.position) <= detectionDistance)
         {
-            //Debug.Log("플레이어와 닿음!");
-            SetToBettle();
+            SetToBattle();
+            CancelInvoke("CheckDistance"); // 전투 시작 후 체크 중단
         }
     }
 
-    void SetToBettle()
-    {
-        StateManager.Instance.StartBattle();
-        enemy.SetActive(true);
-        cameraController.SwitchCamera();
-    }
 
+    private bool isBattleStarted = false; // 전투 시작 여부를 추적하는 변수 추가
+    bool start = false;
+
+
+    void SetToBattle()
+    {
+        if (!isBattleStarted) // 전투가 아직 시작되지 않았을 때만 실행
+        {
+            StateManager.Instance.StartBattle();
+            enemy.SetActive(true);
+            BattleManager.Instance.InitEnemy();
+            BattleManager.Instance.UpdateUIForCurrentEnemy();
+            isBattleStarted = true; // 전투 시작 플래그 설정
+            trun.enabled = true;
+            BattleManager.Instance.StartBattle();
+        }
+    }
 }
 
 

@@ -7,29 +7,34 @@ public class MoveStress : MonoBehaviour
 {
     float playerLastXPoint;
     float threshold = 5f;
+    Character character;
+    int damage;
 
     void Start()
     {
         init();
+
     }
 
     void init()
     {
         playerLastXPoint = Mathf.Floor(transform.position.x / threshold) * threshold;
+        damage = Random.Range(5, 9);
+        character = GetComponent<Character>();
     }
 
     void Update()
     {
         float currentXpoint = Mathf.Floor(transform.position.x / threshold) * threshold;
-        
-        if(currentXpoint != playerLastXPoint)
-        { 
+
+        if (currentXpoint != playerLastXPoint)
+        {
             //Debug.Log($"[{gameObject.name}] 이동 감지 - 이전: {playerLastXPoint}, 현재: {currentXpoint}");    //스트레스 포인트 갱신 확인 용도
             if (currentXpoint > playerLastXPoint) // x+ 방향 이동
             {
                 //필요한 동작 실행
                 ForwardStressUp();
-                
+
             }
             else if (currentXpoint < playerLastXPoint)
             {
@@ -42,9 +47,10 @@ public class MoveStress : MonoBehaviour
     {
         float increaseProbability = 15f;
         float chance = Random.Range(0f, 100f);
-        if( chance <= increaseProbability)
+        if (chance <= increaseProbability)
         {
-            Debug.Log($"[{gameObject.name}]스트레스 증가!");
+            character.TakeSDamage(damage);
+            Debug.Log($"[{gameObject.name}]스트레스 {damage}증가!!");
             return true;
         }
         return false;
@@ -55,9 +61,12 @@ public class MoveStress : MonoBehaviour
     {
         float increaseProbability = 35f;
         float chance = Random.Range(0f, 100f);
+
+
         if (chance <= increaseProbability)
         {
-            Debug.Log($"[{gameObject.name}]스트레스 증가!");
+            character.TakeSDamage(damage);
+            Debug.Log($"[{gameObject.name}]스트레스 {damage}증가!");
             return true;
         }
         return false;

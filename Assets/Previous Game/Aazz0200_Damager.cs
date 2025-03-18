@@ -42,8 +42,10 @@ public class Aazz0200_Damager : MonoBehaviour
     }
 
 
-    public void Dest() {   
-        Destroy(gameObject); }
+    public void Dest()
+    {
+        Destroy(gameObject);
+    }
 
 }
 

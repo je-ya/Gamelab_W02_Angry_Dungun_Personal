@@ -55,7 +55,7 @@ public class Aazz0200_Player : MonoBehaviour
     {
         //¿Ãµø
 
-        if(canMove == true)
+        if (canMove == true)
         {
             float X = Input.GetAxisRaw("Horizontal");
             float Y = Input.GetAxisRaw("Vertical");
@@ -64,7 +64,7 @@ public class Aazz0200_Player : MonoBehaviour
         }
 
 
-        if (canShoot == true&&Input.GetMouseButton(0))
+        if (canShoot == true && Input.GetMouseButton(0))
         {
             var to = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             to.z = 0;
